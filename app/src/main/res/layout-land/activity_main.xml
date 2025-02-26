@@ -1,0 +1,149 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">  <!-- Ensures it fills full screen height -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Left Section: Bill Input & Service Selection -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bill total:"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/billTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="$ bill total"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many people:"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/numPeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="If not 1"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The service was:"
+                android:textSize="16sp" />
+            <RadioGroup
+                android:id="@+id/serviceGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/excellentService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excellent (25%)" />
+                <RadioButton
+                    android:id="@+id/averageService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Average (20%)" />
+                <RadioButton
+                    android:id="@+id/belowAverageService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Below Average (15%)" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <!-- Right Section: Tip Results & Buttons -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tip total:"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tipTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total:"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total per person:"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/totalPerPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#CCCCCC"
+                android:layout_marginTop="12dp" />
+
+            <EditText
+                android:id="@+id/excellentTipInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Excellent: Enter new percentage %"
+                android:inputType="number" />
+            <EditText
+                android:id="@+id/averageTipInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Average: Enter new percentage %"
+                android:inputType="number" />
+            <EditText
+                android:id="@+id/belowAverageTipInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lacking: Enter new percentage %"
+                android:inputType="number" />
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Percentages"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
