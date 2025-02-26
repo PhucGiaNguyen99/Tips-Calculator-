@@ -15,7 +15,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText billTotal, numPeople;
+    // Now for HW4, because everything is in one activity, update the MainActivity.java to
+    // handle both tip calculation and percentage updates.
+    private EditText billTotal, numPeople, excellentTipInput, averageTipInput, belowAverageTipInput;
+
     private RadioGroup serviceGroup;
     private TextView tipTotal, totalAmount, totalPerPerson;
     private Button clearButton, updateButton;
@@ -41,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
         totalAmount = findViewById(R.id.totalAmount);
         totalPerPerson = findViewById(R.id.totalPerPerson);
 
-        clearButton = findViewById(R.id.clearButton);
         updateButton = findViewById(R.id.updateButton);
 
         excellentService = findViewById(R.id.excellentService);
         averageService = findViewById(R.id.averageService);
         belowAverageService = findViewById(R.id.belowAverageService);
+
+        excellentTipInput = findViewById(R.id.excellentTipInput);
+        averageTipInput = findViewById(R.id.averageTipInput);
+        belowAverageTipInput = findViewById(R.id.belowAverageTipInput);
 
         // First check saved instance state before loading preferences
         if (savedInstanceState != null) {
@@ -61,17 +67,8 @@ public class MainActivity extends AppCompatActivity {
         // Handle radio group selection
         serviceGroup.setOnCheckedChangeListener((group, checkedId) -> calculateTip());
 
-        // Handle Clear button
-        clearButton.setOnClickListener(v -> clearFields());
-
         // Handle Update button
-        updateButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, UpdateTipActivity.class);
-            intent.putExtra("excellentTip", excellentTip);
-            intent.putExtra("averageTip", averageTip);
-            intent.putExtra("belowAverageTip", belowAverageTip);
-            startActivityForResult(intent, REQUEST_CODE_UPDATE);
-        });
+        updateButton.setOnClickListener(v -> updateTipPercentages());
     }
 
     // Load preferences if no saved state exists
@@ -139,20 +136,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void clearFields() {
-        billTotal.setText("");
-        numPeople.setText("");
-        serviceGroup.clearCheck();
-        tipTotal.setText("$");
-        totalAmount.setText("$");
-        totalPerPerson.setText("$");
+    private void updateTipPercentages() {
+        if (!excellentTipInput.getText().toString().isEmpty()) {
+            excellentTip = Float.parseFloat(excellentTipInput.getText().toString()) / 100;
+        }
+        if (!averageTipInput.getText().toString().isEmpty()) {
+            averageTip = Float.parseFloat(averageTipInput.getText().toString()) / 100;
+        }
+        if (!belowAverageTipInput.getText().toString().isEmpty()) {
+            belowAverageTip = Float.parseFloat(belowAverageTipInput.getText().toString()) / 100;
+        }
 
-        // Reset tip percentages to defaults
-        excellentTip = 0.25f;
-        averageTip = 0.20f;
-        belowAverageTip = 0.15f;
-        updateRadioButtonText();
         saveTipPreferences();
+        updateRadioButtonText();
+        calculateTip();
     }
 
     public static String roundToTwoDigit(float value) {
@@ -174,6 +171,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void updateRadioButtonText() {
+        excellentService.setText("Excellent (" + (int) (excellentTip * 100) + "%)");
+        averageService.setText("Average (" + (int) (averageTip * 100) + "%)");
+        belowAverageService.setText("Below Average (" + (int) (belowAverageTip * 100) + "%)");
+    }
+
     // Corrected Save Instance State
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -189,11 +192,5 @@ public class MainActivity extends AppCompatActivity {
         averageTip = savedInstanceState.getFloat("averageTip", 0.20f);
         belowAverageTip = savedInstanceState.getFloat("belowAverageTip", 0.15f);
         updateRadioButtonText();
-    }
-
-    private void updateRadioButtonText() {
-        excellentService.setText("Excellent (" + (int) (excellentTip * 100) + "%)");
-        averageService.setText("Average (" + (int) (averageTip * 100) + "%)");
-        belowAverageService.setText("Below Average (" + (int) (belowAverageTip * 100) + "%)");
     }
 }

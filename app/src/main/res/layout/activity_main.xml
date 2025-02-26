@@ -1,116 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:fillViewport="true"> <!-- To make sure it takes full screen height -->
 
-    <!-- Bill total input -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bill total:"
-        android:textSize="16sp" />
-    <EditText
-        android:id="@+id/billTotal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="$ bill total"
-        android:inputType="numberDecimal" />
-
-    <!-- Number of people -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="How many people:"
-        android:textSize="16sp" />
-    <EditText
-        android:id="@+id/numPeople"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="If not 1"
-        android:inputType="number" />
-
-    <!-- Service level -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The service was"
-        android:textSize="16sp"
-        android:paddingTop="8dp" />
-    <RadioGroup
-        android:id="@+id/serviceGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/excellentService"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Bill total input -->
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Bill total:"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/billTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="$ bill total"
+            android:inputType="numberDecimal" />
 
-        <RadioButton
-            android:id="@+id/averageService"
+        <!-- Number of people -->
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="How many people:"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/numPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="If not 1"
+            android:inputType="number" />
 
-        <RadioButton
-            android:id="@+id/belowAverageService"
+        <!-- Service level -->
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RadioGroup>
+            android:layout_height="wrap_content"
+            android:text="The service was"
+            android:textSize="16sp"
+            android:paddingTop="8dp" />
+        <RadioGroup
+            android:id="@+id/serviceGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <!-- Output fields -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tip total:"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/tipTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$" />
+            <RadioButton
+                android:id="@+id/excellentService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total:"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/totalAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$" />
+            <RadioButton
+                android:id="@+id/averageService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total per:"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/totalPerPerson"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$" />
+            <RadioButton
+                android:id="@+id/belowAverageService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
 
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Tipping Percentages"
-        android:backgroundTint="#6200EE"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:layout_marginTop="8dp" />
+        <!-- Output fields -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tip total:"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tipTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$" />
 
-    <!-- Clear button -->
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:backgroundTint="#6200EE"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total:"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/totalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total per:"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/totalPerPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$" />
+
+        <!-- Divider Line -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CCCCCC"
+            android:layout_marginTop="12dp" />
+
+        <!-- Update Tip Percentages -->
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Tip Percentages:"
+            android:textSize="16sp"
+            android:paddingTop="8dp"/>
+        <EditText
+            android:id="@+id/excellentTipInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Excellent: Enter new percentage %"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/averageTipInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Average: Enter new percentage %"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/belowAverageTipInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lacking: Enter new percentage %"
+            android:inputType="number" />
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Percentages"
+            android:backgroundTint="#6200EE"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
