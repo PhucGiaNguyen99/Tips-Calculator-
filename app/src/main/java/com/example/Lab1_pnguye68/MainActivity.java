@@ -3,6 +3,7 @@ package com.example.Lab1_pnguye68;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -184,6 +185,9 @@ public class MainActivity extends AppCompatActivity {
         outState.putFloat("excellentTip", excellentTip);
         outState.putFloat("averageTip", averageTip);
         outState.putFloat("belowAverageTip", belowAverageTip);
+        outState.putString("billTotal", billTotal.getText().toString());
+        outState.putString("numPeople", numPeople.getText().toString());
+        outState.putInt("selectedService", serviceGroup.getCheckedRadioButtonId());
     }
 
     // Restore instance state correctly
@@ -191,6 +195,13 @@ public class MainActivity extends AppCompatActivity {
         excellentTip = savedInstanceState.getFloat("excellentTip", 0.25f);
         averageTip = savedInstanceState.getFloat("averageTip", 0.20f);
         belowAverageTip = savedInstanceState.getFloat("belowAverageTip", 0.15f);
+
+        billTotal.setText(savedInstanceState.getString("billTotal"));
+        numPeople.setText(savedInstanceState.getString("numPeople"));
+        serviceGroup.check(savedInstanceState.getInt("selectedService"));
+
         updateRadioButtonText();
     }
+
+
 }
