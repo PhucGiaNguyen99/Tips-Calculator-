@@ -130,7 +130,7 @@
                 android:id="@+id/belowAverageTipInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Lacking: Enter new percentage %"
+                android:hint="Low: Enter new percentage %"
                 android:inputType="number" />
             <Button
                 android:id="@+id/updateButton"
